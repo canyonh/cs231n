@@ -74,8 +74,11 @@ def svm_loss_vectorized(W, X, y, reg):
   # result in loss.                                                           #
   #############################################################################
   WjtdotX = X.dot(W)
-  WyitdotX = W[:,y[0]]
-  
+  Wyi = W[:,y]
+  WyitdotX = np.sum(X * Wyi.T, 1).reshape(X.shape[0], 1)
+  loss_tmp = np.maximum(0.0, WjtdotX - WyitdotX + 1)
+  loss_tmp[range(X.shape[0]), np.ndarray.tolist(y)] = 0
+  loss = np.average(np.sum(loss_tmp,1)) + reg * np.sum(W * W)
   #############################################################################
   #                             END OF YOUR CODE                              #
   #############################################################################
