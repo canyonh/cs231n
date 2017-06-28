@@ -58,7 +58,6 @@ def svm_loss_naive(W, X, y, reg):
 
   return loss, dW
 
-
 def svm_loss_vectorized(W, X, y, reg):
   """
   Structured SVM loss function, vectorized implementation.
@@ -101,11 +100,32 @@ def svm_loss_vectorized(W, X, y, reg):
   # loss.                                                                     #
   #############################################################################
   
-  #calculate number of incorrect class
-  margin_bool = (margin > 0).sum(1)
-
   #############################################################################
   #                             END OF YOUR CODE                              #
   #############################################################################
 
   return loss, dW
+'''
+def svm_loss_vectorized(W, X, y, reg):
+  """
+  Structured SVM loss function, vectorized implementation.
+
+  Inputs and outputs are the same as svm_loss_naive.
+  """
+  loss = 0.0
+  dW = np.zeros(W.shape) # initialize the gradient as zero
+  N = X.shape[0]
+  D = X.shape[1]
+  C = y.shape[0]
+    
+  print("N=%d, D=%d, C=%d\n", N, D, C)
+
+  # calculate the score X dot W
+  margin = X.dot(W) # N by C
+  marin = margin - margin[np.arange(N), y].reshape(N,1) + 1
+  marin = np.maximum(margin, 0.0)
+  margin[np.arange(N), y] = 0
+  loss_xi = np.sum(margin, 1)
+  loss = np.average(loss_xi) + 0.5 * reg * np.sum(W*W)
+  return loss, dW
+'''
