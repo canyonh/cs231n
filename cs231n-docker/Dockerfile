@@ -10,7 +10,8 @@ RUN apt-get install -y \
 	libopenblas-dev \
 	liblapack-dev \
 	libfreetype6-dev \
-	libpng12-dev \
+	libpng-dev \
+	#libpng12-dev \
 	libjpeg-dev \
 	pkg-config \
 	libncurses5-dev \

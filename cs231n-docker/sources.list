@@ -1,4 +1,4 @@
-deb http://ftp.debian.org/debian experimental main
+#deb http://ftp.debian.org/debian experimental main
 deb http://ftp.debian.org/debian unstable main
 deb http://mirror.internode.on.net/pub/debian jessie main
 deb http://mirror.internode.on.net/pub/debian jessie-updates main
