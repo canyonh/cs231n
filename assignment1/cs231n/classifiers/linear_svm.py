@@ -67,7 +67,7 @@ def svm_loss_vectorized(W, X, y, reg):
   N = X.shape[0]
   D = X.shape[1]
   C = W.shape[1]
-  print("N=%d, D=%d, C=%d", N, D, C)
+  #print("N=%d, D=%d, C=%d", N, D, C)
   loss = 0.0
 
   score = X.dot(W)
